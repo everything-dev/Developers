@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Corporation - Developer Showcase</title>
+    <link rel="icon" type="image/x-icon" href="https://ahmedxbz.github.io/corpiocob-/ico0jjierb.jpg">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --tertiary-color: #ffff00;
+            --card-bg: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .header-link {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .header-link:hover {
+            color: var(--accent-color);
+        }
+
+        .telegram-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards 0.7s;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards 0.9s;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color), var(--tertiary-color));
+            opacity: 0.1;
+            filter: blur(50px);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* Developer Grid */
+        .developer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .developer-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .developer-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .developer-card h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .developer-card p {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-badge {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--card-bg);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .developer-card {
+                padding: 1.5rem;
+            }
+
+            .header-content {
+                justify-content: center;
+            }
+
+            .header-link {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="https://t.me/+FjncZ2apsMo1MjYy" class="header-link" target="_blank" rel="noopener noreferrer">
+                    <svg class="telegram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.178.12.13.145.309.164.472-.001.06.001.119-.001.179z"/>
+                    </svg>
+                    Contact Us
+                </a>
+                <a href="https://ahmedxbz.github.io/EveryThing-Corp/" class="header-link" target="_blank" rel="noopener noreferrer">Our Website</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>Everything Corporation</h1>
+            <p>Showcasing Our Talented Developers</p>
+            <a href="#developers" class="hero-btn">Meet Our Developers</a>
+        </div>
+    </section>
+
+    <main class="container" id="developers">
+        <div class="developer-grid">
+            <section class="developer-card">
+                <h2>Ahmed Ali</h2>
+                <p><strong>Location:</strong> Baghdad, Iraq</p>
+                <p><strong>School:</strong> Baghdad College (3rd Grade)</p>
+                <p><strong>Birth Year:</strong> 2010</p>
+                <p><strong>Started Programming:</strong> 2023</p>
+                <div class="skills">
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">HTML</span>
+                    <span class="skill-badge">CSS</span>
+                    <span class="skill-badge">GDScript</span>
+                </div>
+            </section>
+
+            <section class="developer-card">
+                <h2>Mustafa Ahmed</h2>
+                <p><strong>Location:</strong> Baghdad, Iraq</p>
+                <p><strong>School:</strong> Baghdad College (3rd Grade)</p>
+                <p><strong>Birth Year:</strong> 2010</p>
+                <p><strong>Started Programming:</strong> 2024</p>
+                <div class="skills">
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">HTML</span>
+                    <span class="skill-badge">CSS</span>
+                    <span class="skill-badge">C (some)</span>
+                </div>
+            </section>
+
+            <section class="developer-card">
+                <h2>Bassam Muhamad</h2>
+                <p><strong>Location:</strong> Baghdad, Iraq</p>
+                <p><strong>School:</strong> Baghdad College (3rd Grade)</p>
+                <p><strong>Birth Year:</strong> 2010</p>
+                <p><strong>Started Programming:</strong> 2024</p>
+                <div class="skills">
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">HTML</span>
+                    <span class="skill-badge">CSS</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Everything Corporation. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.developer-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach((card) => {
+                observer.observe(card);
+            });
+
+            // Parallax effect for hero background
+            const heroBackground = document.querySelector('.hero-background');
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.pageYOffset;
+                heroBackground.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+            });
+
+            // Smooth scroll for hero button
+            document.querySelector('.hero-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+
+            // Random color animation for skill badges
+            const badges = document.querySelectorAll('.skill-badge');
+            const colors = ['#00ffff', '#ff00ff', '#ffff00', '#ff00aa'];
+
+            setInterval(() => {
+                badges.forEach(badge => {
+                    badge.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                });
+            }, 3000);
+
+            // Header scroll effect
+            const header = document.querySelector('.header');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', () => {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, false);
+        });
+    </script>
+</body>
+</html>
